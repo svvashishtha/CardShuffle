@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="translationX">6dp</dimen>
+    <dimen name="translationY">50dp</dimen>
+    <dimen name="translation2Y">100dp</dimen>
+    <dimen name="translationYMax">70dp</dimen>
+</resources>

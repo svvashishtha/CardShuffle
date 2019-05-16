@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipChildren="false"
+        android:foregroundGravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <include
+            android:id="@+id/card1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_layout" />
+        <include
+            android:id="@+id/card2"
+            android:layout_marginBottom="@dimen/translationY"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_layout" />
+        <include
+            android:id="@+id/card3"
+            android:layout_marginBottom="@dimen/translation2Y"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_layout" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/scatter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scatter"
+        app:layout_constraintEnd_toStartOf="@id/collect_cards"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/collect_cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Collect cards"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/flip_cards"
+        app:layout_constraintStart_toEndOf="@id/scatter"
+        />
+    <Button
+        android:id="@+id/flip_cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flip to fromt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/collect_cards"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
