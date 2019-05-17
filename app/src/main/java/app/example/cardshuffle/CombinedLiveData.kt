@@ -3,7 +3,9 @@ package app.example.cardshuffle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 
-class CombinedLiveData<T, K,L, S>(source1: LiveData<T>, source2: LiveData<K>, source3: LiveData<L>, private val combine: (data1: T?, data2: K?,data3: L?) -> S) : MediatorLiveData<S>() {
+class CombinedLiveData<T, K,L, S>(source1: LiveData<T>, source2: LiveData<K>, source3: LiveData<L>,
+                                  private val combine: (data1: T?, data2: K?,data3: L?) -> S) :
+        MediatorLiveData<S>() {
 
     private var data1: T? = null
     private var data2: K? = null
