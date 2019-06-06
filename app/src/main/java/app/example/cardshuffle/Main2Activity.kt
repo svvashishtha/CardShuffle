@@ -16,71 +16,73 @@ class Main2Activity : AppCompatActivity() {
     val TAG = "MainActivity"
 
     //todo : Make the flip animation start on click event
-//    t odo : Use the card in a list so that scatter works after flip : done
+//    Done : Use the card in a list so that scatter works after flip : done
 //    todo: use the xml animation selector.
 
     private var scattered: Boolean = false
+    private var flipping: Boolean = false
     var cardList = CustomQueue<View>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         addCardsToList()
         setCardBackGround()
-
         scatter.setOnClickListener { scatterCards() }
         collect_cards.setOnClickListener { collectCards() }
         flip_cards.setOnClickListener { flipCards() }
-
     }
 
     private fun flipCards() {
         if (!scattered) {
-            //take card out of stack
-            cardList[2].animate()
-                    .rotation(45f)
-                    .translationX(resources.getDimension(R.dimen.translationX))
-                    .translationYBy(3 * resources.getDimension(R.dimen.translationY))
-                    .scaleX(0.9f)
-                    .scaleY(0.9f)
-                    .setInterpolator(FastOutSlowInInterpolator())
-                    .withEndAction {
-                        //pull card on top of other cards
-                        cardList[2].z = 2f
-                        //push 2 cards below
-                        cardList[1].z = -2f
-                        cardList[0].z = -2f
+            if (!flipping) {//take card out of stack
+                flipping = true
+                cardList[2].animate()
+                        .rotation(45f)
+                        .translationX(resources.getDimension(R.dimen.translationX))
+                        .translationYBy(3 * resources.getDimension(R.dimen.translationY))
+                        .scaleX(0.9f)
+                        .scaleY(0.9f)
+                        .setInterpolator(FastOutSlowInInterpolator())
+                        .withEndAction {
+                            //pull card on top of other cards
+                            cardList[2].z = 2f
+                            //push 2 cards below
+                            cardList[1].z = -2f
+                            cardList[0].z = -2f
 
-                        //bring cardList[2] to it's new position
-                        cardList[2].animate()
-                                .rotation(0f)
-                                .translationX(0f)
-                                .scaleX(1f)
-                                .scaleY(1f)
-                                .translationYBy(-5 * resources.getDimension(R.dimen.translationY))
+                            //bring cardList[2] to it's new position
+                            cardList[2].animate()
+                                    .rotation(0f)
+                                    .translationX(0f)
+                                    .scaleX(1f)
+                                    .scaleY(1f)
+                                    .translationYBy(-5 * resources.getDimension(R.dimen.translationY))
 
-                                .setInterpolator(FastOutSlowInInterpolator())
-                                .withEndAction {
-                                    //change the position of card in the list
-                                    //now cardList[2] will become cardList[0],
-                                    //cardList[0] will become cardList[1],
-                                    //cardList[1] will become cardList[2]
-                                    cardList.moveToFront(2)
-                                }
-                                .start()
-                        //slide cardList[0] to 1 pos below
-                        cardList[0].animate()
-                                .translationYBy(resources.getDimension(R.dimen.translationY))
-                                .setInterpolator(OvershootInterpolator(3f))
-                                .start()
-                        //slide cardList[1] to 1 pos below
-                        cardList[1].animate()
-                                .translationYBy(resources.getDimension(R.dimen.translationY))
-                                .setInterpolator(OvershootInterpolator(3f))
-                                .start()
-                    }
-                    .start()
-        }else{
-            Toast.makeText(this, "Collect cards before flipping",LENGTH_SHORT).show()
+                                    .setInterpolator(FastOutSlowInInterpolator())
+                                    .withEndAction {
+                                        //change the position of card in the list
+                                        //now cardList[2] will become cardList[0],
+                                        //cardList[0] will become cardList[1],
+                                        //cardList[1] will become cardList[2]
+                                        cardList.moveToFront(2)
+                                        flipping = false
+                                    }
+                                    .start()
+                            //slide cardList[0] to 1 pos below
+                            cardList[0].animate()
+                                    .translationYBy(resources.getDimension(R.dimen.translationY))
+                                    .setInterpolator(OvershootInterpolator(3f))
+                                    .start()
+                            //slide cardList[1] to 1 pos below
+                            cardList[1].animate()
+                                    .translationYBy(resources.getDimension(R.dimen.translationY))
+                                    .setInterpolator(OvershootInterpolator(3f))
+                                    .start()
+                        }
+                        .start()
+            }
+        } else {
+            Toast.makeText(this, "Collect cards before flipping", LENGTH_SHORT).show()
         }
 
     }
@@ -105,6 +107,8 @@ class Main2Activity : AppCompatActivity() {
                     .setInterpolator(OvershootInterpolator(3f))
                     .start()
             scattered = false
+        } else {
+            Toast.makeText(this, "Collect", LENGTH_SHORT).show()
         }
     }
 
@@ -127,6 +131,8 @@ class Main2Activity : AppCompatActivity() {
                     .setInterpolator(OvershootInterpolator(3f))
                     .start()
             scattered = true
+        } else {
+            Toast.makeText(this, "Scatter", LENGTH_SHORT).show()
         }
     }
 
