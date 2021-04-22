@@ -15,10 +15,6 @@ import kotlinx.android.synthetic.main.activity_main2.*
 class Main2Activity : AppCompatActivity() {
     val TAG = "MainActivity"
 
-    //todo : Make the flip animation start on click event
-//    Done : Use the card in a list so that scatter works after flip : done
-//    todo: use the xml animation selector.
-
     private var scattered: Boolean = false
     private var flipping: Boolean = false
     var cardList = CustomQueue<View>()
@@ -90,7 +86,6 @@ class Main2Activity : AppCompatActivity() {
     private fun collectCards() {
         if (scattered) {
             cardList[1].animate()
-                    .rotation(0f)
                     .translationXBy(-50f)
                     .setInterpolator(OvershootInterpolator(3f))
                     .start()

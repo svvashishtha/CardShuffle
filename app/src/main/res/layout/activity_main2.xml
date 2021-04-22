@@ -18,54 +18,61 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <include
             android:id="@+id/card1"
-            android:layout_gravity="center"
+            layout="@layout/card_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/card_layout" />
+            android:layout_gravity="center" />
+
         <include
             android:id="@+id/card2"
-            android:layout_marginBottom="@dimen/translationY"
-            android:layout_gravity="center"
+            layout="@layout/card_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/card_layout" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/translationY" />
+
         <include
             android:id="@+id/card3"
-            android:layout_marginBottom="@dimen/translation2Y"
-            android:layout_gravity="center"
+            layout="@layout/card_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/card_layout" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/translation2Y" />
     </FrameLayout>
 
     <Button
         android:id="@+id/scatter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scatter"
-        app:layout_constraintEnd_toStartOf="@id/collect_cards"
+        android:layout_marginBottom="@dimen/dimen_48dp"
+        android:text="@string/scatter"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/collect_cards"
         app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/collect_cards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Collect cards"
+        android:layout_marginBottom="@dimen/dimen_48dp"
+        android:text="@string/collect_cards"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/flip_cards"
-        app:layout_constraintStart_toEndOf="@id/scatter"
-        />
+        app:layout_constraintStart_toEndOf="@id/scatter" />
+
     <Button
         android:id="@+id/flip_cards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Flip to fromt"
+        android:layout_marginBottom="@dimen/dimen_48dp"
+        android:text="@string/flip_to_front"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/collect_cards"
-        />
+        app:layout_constraintStart_toEndOf="@id/collect_cards" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

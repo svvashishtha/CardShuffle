@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Card Shuffle</string>
+    <string name="scatter">Scatter</string>
+    <string name="collect_cards">Collect cards</string>
+    <string name="flip_to_front">Flip to front</string>
+    <string name="my_name">Saurabh Vashisht</string>
+    <string name="mastercard">mastercard</string>
 </resources>

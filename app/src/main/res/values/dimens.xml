@@ -4,4 +4,5 @@
     <dimen name="translationY">50dp</dimen>
     <dimen name="translation2Y">100dp</dimen>
     <dimen name="translationYMax">70dp</dimen>
+    <dimen name="dimen_48dp">48dp</dimen>
 </resources>
